@@ -4,7 +4,7 @@ package gym_simulation;
  * @author  James Spaniak
  * @version 1.0.0
  * @since   2018-10-15
- */
+ gto*/
 public class Start {
     public static void main(String[] args){
     	if(args.length<2) {
@@ -16,8 +16,12 @@ public class Start {
     		try {
     			gym_cap = Integer.parseInt(args[0]);
     			clients = Integer.parseInt(args[1]);
+    			if(gym_cap <= 0 || clients <= 0) {
+    				throw new Exception();
+    			}
     		} catch(Exception error) {
     			error.printStackTrace();
+    			System.out.print("<gym_capacity> <total_clients> should both be positive integers.");
     			return;
     		}
             Thread gym = new Thread(new Gym(clients, gym_cap));
